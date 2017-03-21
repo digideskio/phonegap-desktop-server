@@ -142,15 +142,17 @@ server.register([Basic, Vision], err => {
         db.reports.saveDoc(payload, (err, report) => {
           if (err) throw err
 
+        /*
         analyticsRequest.post({
             url: 'https://metrics.phonegap.com/gelf',
             form: JSON.stringify(analyticsJSON)
         }, function(err, res, body) {
             if (err) throw err
         });
+        */
 
-          //db.dumps.insert({file, report_id: report.id}, (err, dump) => {
-            //if (err) throw err
+          db.dumps.insert({file, report_id: report.id}, (err, dump) => {
+            if (err) throw err
 
             reply()
           })

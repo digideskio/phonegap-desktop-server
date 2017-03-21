@@ -118,7 +118,7 @@ server.register([Basic, Vision], err => {
     handler: (request, reply) => {
       if (request.payload && request.payload.prod === 'Electron') {
 
-        var analyticsRequest = require('request');
+        //var analyticsRequest = require('request');
 
         var analyticsJSON = {};
         analyticsJSON.version = request.payload.version;

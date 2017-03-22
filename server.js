@@ -136,16 +136,16 @@ server.register([Basic, Vision], err => {
         analyticsJSON.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 
         const payload = Object.assign({}, analyticsJSON)
-        const dumpFilePayload = Object.assign({}, request.payload)
-        const file = dumpFilePayload.upload_file_minidump
+        //const dumpFilePayload = Object.assign({}, request.payload)
+        //const file = dumpFilePayload.upload_file_minidump
 
-        delete dumpFilePayload.upload_file_minidump
+        //delete dumpFilePayload.upload_file_minidump
 
         db.reports.saveDoc(payload, (err, report) => {
           if (err) throw err
 
-          db.dumps.insert({file, report_id: report.id}, (err, dump) => {
-            if (err) throw err
+          //db.dumps.insert({file, report_id: report.id}, (err, dump) => {
+            //if (err) throw err
 
             reply()
           })

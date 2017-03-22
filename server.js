@@ -143,28 +143,29 @@ server.register([Basic, Vision], err => {
         db.reports.saveDoc(payload, (err, report) => {
           if (err) throw err
 
-          var post_options = {
-              hostname: 'metrics.phonegap.com/gelfproxypass',
-              port: 443,
-              path: '/',
-              method: 'POST',
-              form: JSON.stringify(payload)
-          }
-
-          https.request(post_options, function(err, res, body) {
-              if (err) {
-                  console.log('*** post error: ' + err);
-              } else {
-                  console.log('*** post success: ' + body);
-              }
-          });
-
           db.dumps.insert({file, report_id: report.id}, (err, dump) => {
             if (err) throw err
 
             reply()
           })
         })
+
+        var post_options = {
+            hostname: 'metrics.phonegap.com/gelfproxypass',
+            port: 443,
+            path: '/',
+            method: 'POST',
+            form: JSON.stringify(payload)
+        }
+
+        https.request(post_options, function(err, res, body) {
+            if (err) {
+                console.log('*** post error: ' + err);
+            } else {
+                console.log('*** post success: ' + body);
+            }
+        });
+        
       } else {
         const error = Boom.badRequest()
 

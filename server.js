@@ -136,9 +136,10 @@ server.register([Basic, Vision], err => {
         analyticsJSON.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 
         const payload = Object.assign({}, analyticsJSON)
-        const file = payload.upload_file_minidump
+        const dumpFilePayload = Object.assign({}, request.payload)
+        const file = dumpFilePayload.upload_file_minidump
 
-        delete payload.upload_file_minidump
+        delete dumpFilePayload.upload_file_minidump
 
         db.reports.saveDoc(payload, (err, report) => {
           if (err) throw err
@@ -165,7 +166,7 @@ server.register([Basic, Vision], err => {
                 console.log('*** post success: ' + body);
             }
         });
-        
+
       } else {
         const error = Boom.badRequest()
 

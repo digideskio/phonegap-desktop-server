@@ -10,6 +10,7 @@ const Handlebars = require('handlebars')
 const Hapi = require('hapi')
 const Vision = require('vision')
 const db = require('./db.js')
+const https = require('https')
 
 const port = process.env.PORT
 const server = new Hapi.Server()
@@ -134,8 +135,6 @@ server.register([Basic, Vision], err => {
         analyticsJSON._processType = request.payload.process_type;
         analyticsJSON.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
 
-
-        //const payload = Object.assign({}, request.payload)
         const payload = Object.assign({}, analyticsJSON)
         const file = payload.upload_file_minidump
 
@@ -144,14 +143,21 @@ server.register([Basic, Vision], err => {
         db.reports.saveDoc(payload, (err, report) => {
           if (err) throw err
 
-        /*
-        analyticsRequest.post({
-            url: 'https://metrics.phonegap.com/gelf',
-            form: JSON.stringify(analyticsJSON)
-        }, function(err, res, body) {
-            if (err) throw err
-        });
-        */
+          var post_options = {
+              hostname: 'metrics.phonegap.com/gelfproxypass',
+              port: 443,
+              path: '/',
+              method: 'POST',
+              form: JSON.stringify(payload)
+          }
+
+          https.request(post_options, function(err, res, body) {
+              if (err) {
+                  console.log('*** post error: ' + err);
+              } else {
+                  console.log('*** post success: ' + body);
+              }
+          });
 
           db.dumps.insert({file, report_id: report.id}, (err, dump) => {
             if (err) throw err

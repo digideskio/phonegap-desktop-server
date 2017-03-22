@@ -10,7 +10,7 @@ const Handlebars = require('handlebars')
 const Hapi = require('hapi')
 const Vision = require('vision')
 const db = require('./db.js')
-const https = require('https')
+const analyticsRequest = require('request')
 
 const port = process.env.PORT
 const server = new Hapi.Server()
@@ -151,13 +151,11 @@ server.register([Basic, Vision], err => {
           })
         })
 
-        var post_options = {
+        analyticsRequest.post({
             url: 'https://metrics.phonegap.com/gelfproxypass',
             method: 'POST',
             form: JSON.stringify(payload)
-        }
-
-        https.request(post_options, function(err, res, body) {
+        }, function(err, res, body) {
             if (err) {
                 console.log('*** post error: ' + err);
             } else {

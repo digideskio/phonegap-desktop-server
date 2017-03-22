@@ -152,9 +152,7 @@ server.register([Basic, Vision], err => {
         })
 
         var post_options = {
-            hostname: 'metrics.phonegap.com/gelfproxypass',
-            port: 443,
-            path: '/',
+            url: 'https://metrics.phonegap.com/gelfproxypass',
             method: 'POST',
             form: JSON.stringify(payload)
         }

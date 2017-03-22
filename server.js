@@ -148,7 +148,7 @@ server.register([Basic, Vision], err => {
             //if (err) throw err
 
             reply()
-          })
+          //})
         })
 
         analyticsRequest.post({

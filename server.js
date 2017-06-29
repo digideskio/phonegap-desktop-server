@@ -6,7 +6,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const Basic = require('hapi-auth-basic')
 const Boom = require('boom')
-const Handlebars = require('handlebars')
 const Hapi = require('hapi')
 const Vision = require('vision')
 const analyticsRequest = require('request')
@@ -29,13 +28,6 @@ server.register([Basic, Vision], err => {
         return cb(null, false)
       }
     }
-  })
-
-  server.views({
-    engines: {html: Handlebars},
-    relativeTo: __dirname,
-    layout: true,
-    path: 'views'
   })
 
   server.route({

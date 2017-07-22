@@ -27,6 +27,28 @@ working example. The login and password for the demo are `crash` and `electron`.
 You may need to use the example (or any other) app to add some reports to the
 demo server.
 
+## docker
+
+```
+# build docker image
+
+docker build -t phonegap/phonegap-desktop-crash-reporter:latest
+docker tag phonegap/phonegap-desktop-crash-reporter:vX.X
+```
+
+```
+# run locally
+
+docker run --rm -it -p 7000:7000 phonegap/phonegap-desktop-crash-reporter:latest
+```
+
+```
+# publish to docker hub
+
+docker push phonegap/phonegap-desktop-crash-reporter:latest
+docker push phonegap/phonegap-desktop-crash-reporter:vX.X
+```
+
 ## bugs & features
 Please [create an issue][issues] if you encounter bugs or
 missing features.

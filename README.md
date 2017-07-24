@@ -33,7 +33,7 @@ demo server.
 # build docker image
 
 docker build -t phonegap/phonegap-desktop-crash-reporter:latest .
-docker tag phonegap/phonegap-desktop-crash-reporter:vX.X
+docker tag phonegap/phonegap-desktop-crash-reporter:latest phonegap/phonegap-desktop-crash-reporter:vX.X
 ```
 
 ```

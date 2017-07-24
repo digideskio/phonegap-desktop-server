@@ -32,7 +32,7 @@ demo server.
 ```
 # build docker image
 
-docker build -t phonegap/phonegap-desktop-crash-reporter:latest
+docker build -t phonegap/phonegap-desktop-crash-reporter:latest .
 docker tag phonegap/phonegap-desktop-crash-reporter:vX.X
 ```
 
@@ -40,6 +40,10 @@ docker tag phonegap/phonegap-desktop-crash-reporter:vX.X
 # run locally
 
 docker run --rm -it -p 7000:7000 phonegap/phonegap-desktop-crash-reporter:latest
+
+# shell into the image
+
+docker run --rm -it -p 7000:7000 phonegap/phonegap-desktop-crash-reporter:latest /bin/sh
 ```
 
 ```

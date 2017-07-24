@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 const Boom = require('boom')
 const Hapi = require('hapi')
 const analyticsRequest = require('request')
+const version = require('./package.json').version;
 
 const port = process.env.PORT
 const server = new Hapi.Server()
@@ -18,7 +19,7 @@ server.route({
   path: '/',
   config: {
     handler: (request, reply) => {
-      reply();
+      reply(`v${version}`);
     }
   }
 })

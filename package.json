@@ -1,6 +1,6 @@
 {
   "name": "phonegap-desktop-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update and Crash Reporter for Phone Desktop",
   "repository": "github:phonegap-desktop-server",
   "author": "goya rudd@adobe.com",

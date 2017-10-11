@@ -9,6 +9,7 @@ const morgan = require('morgan');
 
 app.use(morgan('combined'));
 app.use(formidable());
+app.enable('trust proxy');
 
 require('./server-update')(app);
 require('./server-crash')(app);

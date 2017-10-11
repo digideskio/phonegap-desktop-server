@@ -1,3 +1,4 @@
 /crash-reports/
 /node_modules/
 /config.ini
+electron-bomb/node_modules

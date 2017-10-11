@@ -10,7 +10,7 @@ let win
 
 crashReporter.start({
   companyName: 'Company Name',
-  submitURL: 'https://pacific-falls-32011.herokuapp.com/',
+  submitURL: 'http://127.0.0.1:8080',
   autoSubmit: true,
   ignoreSystemCrashHandler: true,
   extra: {'extra': 'info from the main process'}

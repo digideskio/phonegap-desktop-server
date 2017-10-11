@@ -1,4 +1,4 @@
-FROM node:6.11.1-alpine
+FROM node:8.6.0-alpine
 MAINTAINER rudd "rudd@adobe.com"
 
 COPY ./package.json /crash-server/package.json

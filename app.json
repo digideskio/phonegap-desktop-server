@@ -1,9 +1,0 @@
-{
-  "name": "electron-crash-report-server",
-  "description": "Crash report server for Electron applications",
-  "repository": "https://github.com/johnmuhl/electron-crash-report-server",
-  "env": {
-    "AUTH_USER": "crash",
-    "AUTH_PASS": "electron"
-  }
-}
